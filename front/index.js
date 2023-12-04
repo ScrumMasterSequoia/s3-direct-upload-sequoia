@@ -6,11 +6,16 @@ imageForm.addEventListener("submit", async event => {
   event.preventDefault()
   const file = imageInput.files[0]
 
-  // get secure url from our server
+  // get secure url from our server 
   const { url } = await fetch("/s3Url").then(res => res.json())
-  // console.log(res.body)
-  console.log(url)
-
+  try {
+        console.log(url)
+ 
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('failed to get secure url');
+    }
+  
   // post the image direclty to the s3 bucket
   await fetch(url, {
     method: "PUT",
@@ -24,7 +29,6 @@ imageForm.addEventListener("submit", async event => {
   console.log(imageUrl)
 
   // post requst to my server to store any extra data
-  
   
   const img = document.createElement("img")
   img.src = imageUrl

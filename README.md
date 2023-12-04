@@ -24,5 +24,20 @@ $ npm install aws-sdk
 
 $ npm install dotenv
 
+to escape from running port, press "control+c"
 
-right click on index.html, select Open with Live Server
+
+// if we want to try to switch to aws-sdk v3. I have undone these steps.. kind of 
+$  npx aws-sdk-js-codemod -t v2-to-v3 s3.js
+
+Need to install the following packages:
+aws-sdk-js-codemod@0.28.2
+Ok to proceed? (y) y
+rerun the above line afterwards
+
+
+trying to use
+$ npm install aws-sdk/client-s3
+but I may have the wrong version of aws-sdk (2.something installed) yet I have tried to refactor my imports because of the depricated warning associated with v2. to roll back, use the initial commit in github, which has the v2 version.
+
+while trying to use s3 bucket static hosting, I deleted the node_modules folder from the back/ folder

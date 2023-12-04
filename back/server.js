@@ -3,22 +3,16 @@ import { generateUploadURL } from './s3.js'
 
 const app = express()
 
-app.use(express.static('front'))
+app.use(express.static('../front'))
 
 app.get('/s3Url', async (req, res) => {
-
-  // added from here
-// readFile('./front/index.html', 'utf8', (err, data) => {
-//   if (err) {
-//     console.error(err)
-//     return
-//   }
-//   console.log(data)
-// })
-// to here
-
-  const url = await generateUploadURL()
-  res.send({url})
-})
+  try {
+    const url = await generateUploadURL();
+    res.send({url});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error generating the S3 URL');
+  }
+});
 
 app.listen(8080, () => console.log("listening at http://localhost:8080"))
