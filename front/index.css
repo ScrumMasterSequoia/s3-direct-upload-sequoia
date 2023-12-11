@@ -1,4 +1,13 @@
+*/body, html {
+  height: 100%;
+  margin: 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
 form {
+  align-items: center;
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -8,4 +17,24 @@ form {
 form > * {
   margin: 5px 0;
   box-sizing: border-box;
+}
+/* doesnt work. instead I am using the tags in the custom img creator in the index.js file (lines 45-55 roughly) */
+.image-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* optionally add padding and max-width as needed */
+  padding: 20px;
+}
+
+.image-column img {
+  /* Center images in the column, limit their maximum width, and add margin for spacing */
+  max-width: 100%; /* you can adjust this value */
+  margin-bottom: 20px; /* adjust space between images */
+}
+
+/* If you want the images to take full width of their container up to a certain point, you can additionally set a specific max-width */
+.image-column img {
+  width: 100%; /* makes image responsive, i.e., adjust to the width of its parent container */
+  max-width: 500px; /* adjust this to what you feel looks best */
 }
